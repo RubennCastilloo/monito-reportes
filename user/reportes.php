@@ -1,7 +1,7 @@
 <?php 
 include 'layout/header.php';
 ?>
-<h2 class="text-center pt-3">Reporte de Fallas</h2>
+<h2 class="text-center pt-3">Generar Reporte</h2>
 
 <form class="needs-validation formulario-reportes p-4" novalidate>
   <div class="form-row">

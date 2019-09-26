@@ -1,7 +1,7 @@
 <?php 
 include 'layout/header.php';
 ?>
-<h2 class="text-center pt-3">Reporte de Fallas</h2>
+<h2 class="text-center pt-3">Reporte de Servicios</h2>
 
 <form class="needs-validation formulario-reportes p-4" novalidate>
   <div class="form-row">
@@ -15,19 +15,21 @@ include 'layout/header.php';
     </div>
     <div class="col-md-4 mb-3">
         
-      <label for="area">Departamento</label>
-      <input id="departamentoInput" type="text" class="custom-select " list="departamento" value="">
-      <datalist class="ingresarDepartamento" id="departamento">
-          <option  value="">Seleccionar</option>
-          <option value="Monitoreo">Monitoreo</option>
-          <option value="Sistemas">Sistemas</option>
-          <option value="Administrativo">Administrativo</option>
+      <label for="area">Ubicacion</label>
+      <input id="ubicacionInput" type="text" class="custom-select " list="ubicacion" value="">
+      <datalist class="input" id="ubicacion">
+          <option value="">Seleccionar</option>
+          <option value="TecnoParque Chihuahua">TecnoParque Chihuahua</option>
+          <option value="Juárez">Juárez</option>
+          <option value="Cuauhtémoc">Cuauhtémoc</option>
+          <option value="Hidalgo del Parral">Hidalgo del Parral</option>
+          <option value="Delicias">Delicias</option>
           <option value="Otro">Otro</option>
         </select>
     </div>
     <div class="col-md-4 mb-3">
         
-      <label for="area">Area de Reporte</label>
+      <label for="area">Servidor</label>
       <input id="areaInput" type="text" class="custom-select " list="area" value="">
       <datalist class="ingresarArea" id="area">
           <option  value="">Seleccionar</option>
@@ -43,19 +45,19 @@ include 'layout/header.php';
         <div class="form-group">
             <label for="fechaActual">Fecha</label>
                 <div class="col-14">
-                    <input class="form-control" type="date" value="" id="fechaActual" disabled>
+                    <input class="form-control" type="date" value="" id="fechaActual">
                 </div>
     </div>
   </div>
   <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text">Descripcion de falla</span>
+    <span class="input-group-text">Descripcion del servicio</span>
   </div>
   <textarea class="form-control" aria-label="With textarea" id="falla"></textarea>
 </div>
 
 </div>
-  <button class="btn btn-outline-danger" type="submit" id="generarReporte">Generar Reporte</button>
+  <button class="btn btn-outline-danger" type="submit" id="generarReporte">Reportar Servicio</button>
 </form>
 
 
