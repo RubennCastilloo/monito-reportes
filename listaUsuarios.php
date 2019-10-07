@@ -1,11 +1,12 @@
 <?php 
+include 'includes/sesiones.php';
 include 'layout/header.php';
 include 'includes/funciones.php';
 ?>
 <h2 class="text-center pt-3">Lista de Usuarios</h2>
 
 <div class="container"> 
-    <table class="table table-hover">
+    <table class="table table-hover listado-usuarios">
     <thead>
         <tr>
         <th scope="col">ID</th>
@@ -26,7 +27,7 @@ include 'includes/funciones.php';
         <td><?php echo $usuario['usuario']; ?></td>
         <td>
             <a href="editarUsuario.php?id=<?php echo $usuario['id']; ?>" class="btn btn-outline-info" title="Editar Usuario"><i class="fas fa-glasses"></i></a>
-          <button data-id="<?php echo $usuario['id']; ?>" type="button" class="btn btn-outline-danger" title="Borrar Usuario"><i class="fas fa-trash"></i></button>
+          <button data-id="<?php echo $usuario['id']; ?>" type="button" class="btn btn-outline-danger btn-borrar" title="Borrar Usuario"><i class="fas fa-trash"></i></button>
          </td>
         </tr>
         <?php

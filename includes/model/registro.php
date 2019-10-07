@@ -22,17 +22,16 @@ include '../conn.php';
             );
         } 
         else {
-            include '../conn.php';
 
             $opciones = array(
                 'cost' => 12
             );
             
-            $hash_pass = password_hash($passwordUsuario, PASSWORD_BCRYPT, $opciones);
+            $hash_pass = password_hash($password, PASSWORD_BCRYPT, $opciones);
 
             try {
                 $stmt = $conn->prepare("INSERT INTO usuarios (nombre, apellido, area, usuario, password) VALUES (?, ?, ?, ?, ?)");
-                $stmt->bind_param('sssss', $nombre, $apellido, $usuario, $usuario, $hash_pass);
+                $stmt->bind_param('sssss', $nombre, $apellido, $area, $usuario, $hash_pass);
                 $stmt->execute();
                 if ($stmt->affected_rows > 0) {
                     $respuesta = array(

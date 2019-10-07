@@ -1,4 +1,5 @@
 <?php 
+include 'includes/sesiones.php';
 include 'layout/header.php';
 include 'includes/funciones.php';
 

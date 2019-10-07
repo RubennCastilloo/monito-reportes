@@ -1,14 +1,15 @@
 <?php 
+include 'sesiones.php';
 include 'layout/header.php';
 ?>
-<h2 class="text-center pt-3">Generar Reporte</h2>
+<h2 class="text-center pt-3">Reporte de Fallas</h2>
 
 <form class="needs-validation formulario-reportes p-4" novalidate>
   <div class="form-row">
   
     <div class="col-md-4 mb-3">
       <label for="nombre">Nombre</label>
-      <input type="text" class="form-control ingresarNombre" id="nombre" placeholder="Nombre" >
+      <input type="text" class="form-control ingresarNombre" id="nombre" placeholder="Nombre" value="<?php echo $_SESSION['nombre'] . " " . $_SESSION['apellido']?>" disabled>
       <div class="valid-feedback">
         Correcto!
       </div>
@@ -55,7 +56,7 @@ include 'layout/header.php';
 </div>
 
 </div>
-  <button class="btn btn-outline-danger" type="submit" id="generarReporte">Generar Reporte</button>
+  <button class="btn btn-outline-danger" type="submit" id="generarReporteMonitoreo">Generar Reporte</button>
 </form>
 
 

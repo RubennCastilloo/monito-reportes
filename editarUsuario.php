@@ -1,4 +1,5 @@
 <?php 
+include 'includes/sesiones.php';
 include 'layout/header.php';
 include 'includes/funciones.php';
 
@@ -68,6 +69,7 @@ $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
   
   
   </div>
+  <input type="hidden" class="editar-usuario" id="id-editar" value="<?php echo $usuario['id']; ?>">
   <button class="btn btn-outline-danger" type="submit" id="editarUsuario">Editar Usuario</button>
 </form>
 

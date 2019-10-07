@@ -1,4 +1,5 @@
 <?php 
+include 'sesiones.php';
 include 'layout/header.php';
 ?>
 <h2 class="text-center pt-3">Proponer Personaje</h2>
@@ -74,7 +75,7 @@ include 'layout/header.php';
   
   
   </div>
-  <button class="btn btn-outline-danger" type="submit" id="registrarUsuario">Registrar Usuario</button>
+  <button class="btn btn-outline-danger" type="submit" id="registrarUsuario">Enviar Propuesta</button>
 </form>
 
 

@@ -1,4 +1,5 @@
 <?php 
+include 'includes/sesiones.php';
 include 'layout/header.php';
 ?>
 <h2 class="text-center pt-3">Reporte de Fallas</h2>
@@ -8,7 +9,7 @@ include 'layout/header.php';
   
     <div class="col-md-4 mb-3">
       <label for="nombre">Nombre</label>
-      <input type="text" class="form-control ingresarNombre" id="nombre" placeholder="Nombre" >
+      <input type="text" class="form-control ingresarNombre" id="nombre" placeholder="Nombre" value="<?php echo $_SESSION['nombre'] . " " . $_SESSION['apellido']?>" disabled>
       <div class="valid-feedback">
         Correcto!
       </div>

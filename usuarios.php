@@ -1,4 +1,5 @@
 <?php 
+include 'includes/sesiones.php';
 include 'layout/header.php';
 ?>
 <h2 class="text-center pt-3">Crear Usuario</h2>

@@ -1,4 +1,5 @@
 <?php 
+include 'sesiones.php';
 include 'layout/header.php';
 ?>
 <h2 class="text-center pt-3">Propuesta</h2>

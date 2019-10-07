@@ -1,5 +1,5 @@
 <?php
-$reporte = filter_var($_POST['reporte'], FILTER_SANITIZE_STRING);
+
 $nombre = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
 $ubicacion = filter_var($_POST['ubicacion'], FILTER_SANITIZE_STRING);
 $equipo = filter_var($_POST['equipo'], FILTER_SANITIZE_STRING);
@@ -12,8 +12,8 @@ $observaciones = filter_var($_POST['observaciones'], FILTER_SANITIZE_STRING);
 include '../conn.php';
 
 try {
-    $stmt = $conn->prepare("INSERT INTO servicios (reporte, nombre, ubicacion, equipo, serie, fecha, problema, observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('ssssssss', $reporte, $nombre, $ubicacion, $equipo, $serie, $fecha, $problema, $observaciones);
+    $stmt = $conn->prepare("INSERT INTO servicios (nombre, ubicacion, equipo, serie, fecha, problema, observaciones) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssss', $nombre, $ubicacion, $equipo, $serie, $fecha, $problema, $observaciones);
     $stmt->execute();
     if ($stmt->affected_rows > 0) {
         $respuesta = array(

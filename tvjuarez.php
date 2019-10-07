@@ -1,4 +1,5 @@
 <?php
+    include 'includes/sesiones.php';
     include 'login/include/sesiones.php';
     include 'layout/header.php';
     include 'layout/nav-user.php';

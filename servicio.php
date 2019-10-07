@@ -1,4 +1,5 @@
 <?php 
+include 'includes/sesiones.php';
 include 'layout/header.php';
 include 'includes/funciones.php';
 ?>
@@ -6,18 +7,10 @@ include 'includes/funciones.php';
 
 <form class="needs-validation formulario-servicios p-4" novalidate>
   <div class="form-row">
-
-  <div class="col-md-4 mb-3">
-      <label for="reporte">No. Reporte</label>
-      <input type="text" class="form-control ingresarNombre" id="reporte" placeholder="No. Reporte" >
-      <div class="valid-feedback">
-        Correcto!
-      </div>
-    </div>
   
     <div class="col-md-4 mb-3">
       <label for="nombre">Nombre</label>
-      <input type="text" class="form-control ingresarNombre" id="nombre" placeholder="Nombre" >
+      <input type="text" class="form-control ingresarNombre" id="nombre" placeholder="Nombre" value="<?php echo $_SESSION['nombre'] . " " . $_SESSION['apellido'] ?>" disabled>
       <div class="valid-feedback">
         Correcto!
       </div>

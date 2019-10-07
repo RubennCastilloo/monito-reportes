@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 
-    <title>Sistema MONITO</title>
+    <title>Sistema de Reportes</title>
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><img src="images/logo.png" alt=""></a>
+  <a class="navbar-brand" href="/monito-reportes/user/"><img src="images/logo.png" alt=""></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" 
           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
           aria-expanded="false" aria-label="Toggle navigation">
@@ -23,43 +23,46 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           Reportes
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" href="reportes.php">Generar Reporte</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
+    <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Propuestas
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="proponerPrograma.php">Programa</a>
-          <a class="dropdown-item" href="proponerPersonaje.php">Personaje o Institucion</a>
-          <a class="dropdown-item" href="propuesta.php">Otra Propuesta</a>
+          <a class="dropdown-item disabled" href="proponerPrograma.php">Programa</a>
+          <a class="dropdown-item disabled" href="proponerPersonaje.php">Personaje o Institucion</a>
+          <a class="dropdown-item disabled" href="otraPropuesta.php">Otra Propuesta</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          TV y Radio
+          Reportes
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="radiostream.php" target="_blank"><i class="fas fa-broadcast-tower"></i> Radio Streaming</a>
-          <a class="dropdown-item" href="radiochih.php" target="_blank"><i class="fas fa-broadcast-tower"></i> Radio Chihuahua</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="tvchih.php" target="_blank"><i class="fas fa-tv"></i> TV Chihuahua</a>
-          <a class="dropdown-item" href="tvjuarez.php" target="_blank"> <i class="fas fa-tv"></i> TV Juárez</a>
+          <a class="dropdown-item" href="reportes.php">Reportar Falla</a>
+          <a class="dropdown-item" href="servicio.php">Solicitar Servicio</a>
         </div>
       </li>
+    
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Programas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="radiostream.php"><i class="fas fa-broadcast-tower"></i> Radio Streaming</a>
+          <a class="dropdown-item" href="radiochih.php"><i class="fas fa-broadcast-tower"></i> Radio Chihuahua</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="tvchih.php"><i class="fas fa-tv"></i> TV Chihuahua</a>
+          <a class="dropdown-item" href="tvjuarez.php"> <i class="fas fa-tv"></i> TV Juárez</a>
+        </div>
+      </li>
+      
     </ul>
     <form class="form-inline my-2 my-lg-0">
      
-      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Cerrar Sesion</button>
+     <a class="btn btn-outline-danger my-2 my-sm-0" href="../login/index.html?cerrar_sesion=true">Cerrar Sesion</a>
     </form>
   </div>
 </nav>
