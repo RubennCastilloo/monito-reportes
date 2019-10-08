@@ -9,7 +9,8 @@ const registrarUsuario = document.querySelector('#registrarUsuario'),
       reportarMonitoreo = document.querySelector('#generarReporteMonitoreo'),
       enviarServicioMonitoreo = document.querySelector('#enviarServicioMonitoreo'),
       proponerPrograma = document.querySelector('#proponer'),
-      proponerPersonaje = document.querySelector('#proponerPersonaje');
+      proponerPersonaje = document.querySelector('#proponerPersonaje'),
+      listadoPropuestas = document.querySelector('.listado-propuestas');
 
 
       function setFecha(){
@@ -79,6 +80,14 @@ function eventListenners() {
     }
     if (proponerPersonaje) {
       proponerPersonaje.addEventListener('click', personaje);
+    }
+    if (listadoPropuestas) {
+      document.addEventListener('DOMContentLoaded', function () {
+        actualizarProgreso();
+    })
+    }
+    if (listadoPropuestas) {
+      listadoPropuestas.addEventListener('click', accionesPropuestas);
     }
 }
 
@@ -618,7 +627,8 @@ function programa(e) {
         tipo = document.querySelector('#resultadoTipo').value,
         fuente = document.querySelector('#fuente').value,
         programa = document.querySelector('#programa').value,
-        comentarios = document.querySelector('#comentarios').value;
+        comentarios = document.querySelector('#comentarios').value,
+        dato = "Programa";
 
         if (tipo === '' || fuente === '' || programa === '' || comentarios === '') {
           notificacionFlotante('error', 'Todos los campos son obligatorios');
@@ -631,6 +641,7 @@ function programa(e) {
           propuestaPrograma.append('fuente', fuente);
           propuestaPrograma.append('programa', programa);
           propuestaPrograma.append('comentarios', comentarios);
+          propuestaPrograma.append('dato', dato);
 
           const xhr = new XMLHttpRequest();
 
@@ -659,7 +670,9 @@ function personaje(e) {
         nombre = document.querySelector('#nombre').value,
         tipo = document.querySelector('#tipoValor').value,
         categoria = document.querySelector('#categoria').value,
-        comentarios = document.querySelector('#comentarios').value;
+        comentarios = document.querySelector('#comentarios').value,
+        dato = "Personaje o Institucion";
+        
 
         if (tipo === '' || categoria === '' || comentarios  === '') {
           notificacionFlotante('error', 'Todos los campos son obligatorios');
@@ -671,6 +684,7 @@ function personaje(e) {
           propuestaPersonaje.append('tipo', tipo);
           propuestaPersonaje.append('categoria', categoria);
           propuestaPersonaje.append('comentarios', comentarios);
+          propuestaPersonaje.append('dato', dato);
 
           const xhr = new XMLHttpRequest();
 
@@ -690,4 +704,48 @@ function personaje(e) {
           }
           xhr.send(propuestaPersonaje);
         }
+}
+
+function actualizarProgreso(e) {
+
+  //const noCompletado = e.target.parentElement.classList.contains('noCompletado');
+  //const completado = e.target.parentElement.classList.contains('completado');
+  //const element = document.querySelector('.btn');
+
+  //Obtener todas las tareas
+  const tareas = document.querySelectorAll('.check');
+
+  //Obtener las tareas completadas
+  const tareasCompletadas = document.querySelectorAll('.completado');
+
+  //Determinar el avance
+  const avance = Math.round((tareasCompletadas.length / tareas.length) * 100);
+
+  //Asignar el avance a la barra
+  const porcentaje = document.querySelector('#porcentaje');
+  porcentaje.style.width = avance+'%';
+
+  //Actualizar numero de porcentaje
+  const textoPorcentaje = document.querySelector('.texto-porcentaje');
+  let total = 0;
+
+  tareas.forEach(porcentajeNumero => {
+      if(porcentajeNumero.style.display === '' || porcentajeNumero.style.display === 'table-row'){
+           total++;
+      }
+
+ });
+
+ //Agregar al HTML con el signo de porcentaje
+ textoPorcentaje.textContent = avance+'%';
+
+ // Si el resultado es NaN cambiar a 0% en HTML
+ if (isNaN(avance)){
+  textoPorcentaje.textContent = 0+'%';
+ }
+}
+
+function accionesPropuestas(e) {
+  e.preventDefault();
+  
 }

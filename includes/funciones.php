@@ -48,3 +48,23 @@ function obtenerEquipos() {
          return false;
     }
 } 
+
+function obtenerPropuestas() {
+    include 'conn.php';
+    try {
+        return $conn->query("SELECT id, fecha, nombre, dato, estado FROM personajes");
+    } catch (Exception $e) {
+         echo "Error!" . $e->getMessage() . "<br>";
+         return false;
+    }
+} 
+
+function obtenerProgramas() {
+    include 'conn.php';
+    try {
+        return $conn->query("SELECT id, fecha, nombre, dato, tipo, estado FROM programas");
+    } catch (Exception $e) {
+         echo "Error!" . $e->getMessage() . "<br>";
+         return false;
+    }
+} 
