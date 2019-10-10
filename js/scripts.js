@@ -10,6 +10,7 @@ const registrarUsuario = document.querySelector('#registrarUsuario'),
       enviarServicioMonitoreo = document.querySelector('#enviarServicioMonitoreo'),
       proponerPrograma = document.querySelector('#proponer'),
       proponerPersonaje = document.querySelector('#proponerPersonaje'),
+      propuesta = document.querySelector('#enviarPropuesta'),
       listadoPropuestas = document.querySelector('.listado-propuestas');
 
 
@@ -88,6 +89,9 @@ function eventListenners() {
     }
     if (listadoPropuestas) {
       listadoPropuestas.addEventListener('click', accionesPropuestas);
+    }
+    if (propuesta) {
+      propuesta.addEventListener('click', propuestaGeneral);
     }
 }
 
@@ -706,6 +710,48 @@ function personaje(e) {
         }
 }
 
+function propuestaGeneral(e) {
+  e.preventDefault();
+  
+  console.log('hola');
+  // const fecha = document.querySelector('#fechaActual').value,
+  //       nombre = document.querySelector('#nombre').value,
+  //       propuesta = document.querySelector('#propuesta').value,
+  //       dato = "Propuesta General";
+        
+
+  //       if (propuesta === '') {
+  //         notificacionFlotante('error', 'Campo obligatorio');
+  //       } else {
+  //         const propuestaPersonaje = new FormData();
+          
+  //         propuestaPersonaje.append('fecha', fecha);
+  //         propuestaPersonaje.append('nombre', nombre);
+  //         propuestaPersonaje.append('tipo', tipo);
+  //         propuestaPersonaje.append('categoria', categoria);
+  //         propuestaPersonaje.append('comentarios', comentarios);
+  //         propuestaPersonaje.append('dato', dato);
+
+  //         const xhr = new XMLHttpRequest();
+
+  //         xhr.open('POST', 'includes/model/propuestaPersonaje.php', true);
+
+  //         xhr.onload = function() {
+  //           if (this.status === 200) {
+  //             const respuesta = JSON.parse(xhr.responseText);
+  //             console.log(respuesta);
+  //             if (respuesta.respuesta === 'correcto') {
+  //               notificacionFlotante('success', 'Propuesta enviada correctamente');
+  //               document.querySelector('.formulario').reset();
+  //               setFecha();
+  //             }
+  //           }
+
+  //         }
+  //         xhr.send(propuestaPersonaje);
+  //       }
+}
+
 function actualizarProgreso(e) {
 
   //const noCompletado = e.target.parentElement.classList.contains('noCompletado');
@@ -747,5 +793,47 @@ function actualizarProgreso(e) {
 
 function accionesPropuestas(e) {
   e.preventDefault();
-  
+  console.log(e.target);
+
+  if (e.target.classList.contains('fa-check')) {
+    if (e.target.classList.contains('completo')) {
+        e.target.classList.remove('completo');
+
+        cambiarEstadoTarea(e.target, 0);
+    } else {
+        e.target.classList.add('completo');
+        cambiarEstadoTarea(e.target, 1);
+    }
 }
+}
+
+function cambiarEstadoTarea(tarea, estado) {
+  var idTarea = tarea.parentElement.parentElement.id.split(':');
+  console.log(idTarea[1]);
+
+  //Crear llamado a AJAX
+  var xhr = new XMLHttpRequest();
+
+  // Informacion
+  var datos = new FormData();
+  datos.append('id', idTarea); 
+  datos.append('estado', estado);
+  // console.log(estado);
+
+
+  // Abrir la conexion
+  xhr.open('POST', 'includes/model/propuestas.php', true);
+
+  // On load
+  xhr.onload = function() {
+      if (this.status === 200) {
+          console.log(JSON.parse(xhr.responseText));
+          //Actualizar el progreso
+          actualizarProgreso();
+      }
+  }
+  // Enviar la peticion
+  xhr.send(datos);
+
+}
+

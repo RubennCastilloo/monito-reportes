@@ -34,7 +34,7 @@ include 'includes/funciones.php';
       <td><?php echo $propuesta['nombre']; ?></td>
       <td>
           <button type="button" class="btn btn-outline-info " title="Ver Reporte"><i class="fas fa-glasses"></i></button>
-          <button type="button" class="btn check btn-outline-success <?php echo($propuesta['estado'] === '1' ? 'noCompletado' : 'completado') ?>" title="Marcar como resuleto" id="<?php echo $propuesta['id']; ?>"><i class="fas fa-check"></i></button>
+          <button type="button" class="btn check btn-outline-success" title="Marcar como resuleto" ><i class="fas fa-check <?php echo($propuesta['estado'] === '0' ? 'noCompletado' : '') ?>" id="<?php echo $propuesta['id']; ?>"></i></button>
           <button type="button" class="btn btn-outline-danger" title="Borrar Reporte"><i class="fas fa-trash"></i></button>
     </td>
     </tr>
