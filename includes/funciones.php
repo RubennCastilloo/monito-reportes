@@ -68,3 +68,13 @@ function obtenerProgramas() {
          return false;
     }
 } 
+
+function obtenerGenerales() {
+    include 'conn.php';
+    try {
+        return $conn->query("SELECT id, fecha, nombre, propuesta, dato, estado FROM general");
+    } catch (Exception $e) {
+         echo "Error!" . $e->getMessage() . "<br>";
+         return false;
+    }
+} 

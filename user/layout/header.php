@@ -29,9 +29,9 @@
           Propuestas
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item disabled" href="proponerPrograma.php">Programa</a>
-          <a class="dropdown-item disabled" href="proponerPersonaje.php">Personaje o Institucion</a>
-          <a class="dropdown-item disabled" href="otraPropuesta.php">Otra Propuesta</a>
+          <a class="dropdown-item " href="proponerPrograma.php">Programa</a>
+          <a class="dropdown-item " href="proponerPersonaje.php">Personaje o Institucion</a>
+          <a class="dropdown-item " href="otraPropuesta.php">Otra Propuesta</a>
         </div>
       </li>
       <li class="nav-item dropdown">

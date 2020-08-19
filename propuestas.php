@@ -59,6 +59,24 @@ include 'includes/funciones.php';
   }
 }
 ?>
+
+<?php $propuestas = obtenerGenerales();
+    if ($propuestas->num_rows) {
+      foreach($propuestas as $propuesta) { ?>
+    <tr>
+      <td><?php echo $propuesta['dato']; ?></td>
+      <td><?php echo $propuesta['fecha']; ?></td>
+      <td><?php echo $propuesta['nombre']; ?></td>
+      <td>
+          <button type="button" class="btn btn-outline-info" title="Ver Reporte"><i class="fas fa-glasses"></i></button>
+          <button type="button" class="btn check btn-outline-success" title="Marcar como resuleto"><i class="fas fa-check"></i></button>
+          <button type="button" class="btn btn-outline-danger" title="Borrar Reporte"><i class="fas fa-trash"></i></button>
+    </td>
+    </tr>
+    <?php
+  }
+}
+?>
   </tbody>
 </table>
   </div>

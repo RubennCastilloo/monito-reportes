@@ -2,9 +2,9 @@
 include 'sesiones.php';
 include 'layout/header.php';
 ?>
-<h2 class="text-center pt-3">Proponer Personaje</h2>
+<h2 class="text-center pt-3">Proponer Personaje o Institucion</h2>
 
-<form class="needs-validation formulario-usuario p-4" novalidate>
+<form class="needs-validation formulario p-4" novalidate>
     <div class="form-row">
     <div class="col-md-4 mb-3">
               <label for="fechaActual">Fecha</label>
@@ -14,59 +14,58 @@ include 'layout/header.php';
     </div>
   
     <div class="col-md-4 mb-3">
-      <label for="usuarioNombre text-center">Nombre</label>
-      <input type="text" class="form-control ingresarNombre" id="usuarioNombre" placeholder="Nombre"  disabled>
+      <label for="nombre">Nombre</label>
+      <input type="text" class="form-control ingresarNombre" id="nombre" placeholder="Nombre"  disabled value="<?php echo $_SESSION['nombre'] . " " . $_SESSION['apellido'] ?>">
       <div class="valid-feedback">
         Correcto!
       </div>
     </div>
     <div class="col-md-4 mb-3">
         
-      <label for="usuarioTipo">Tipo</label>
-      <input type="text" class="custom-select " list="lista" value=""> 
-        <datalist class="ingresarEmpresa" id="lista">
-          <option  value="">Seleccionar</option>
-          <option value="Radio"> Radio</option>
-          <option value="Television"> Television</option>
-          <option value="Digitales"> Digitales</option>
-          <option value="Impresos"> Impresos</option>
-          <option value="Portadas Impresos Estatales"> Portadas Impresos Estatales</option>
-          <option value="Columnas Políticas Estatales"> Columnas Políticas Estatales</option>
-          <option value="Redes Sociales"> Redes Sociales</option>
-          <option value="Periódico completo"> Periódico completo</option>
-          <option value="Columnas Nacionales"> Columnas Nacionales</option>
-          <option value="Convocatorias"> Convocatorias</option>
-          <option value="Resumen Nacional"> Resumen Nacional</option>
-          <option value="Portadas Nacionales"> Portadas Nacionales</option>
-          <option value="Editorial"> Editorial</option>
+      <label for="tipo">Tipo</label>
+      <input type="text" class="custom-select " list="tipo" value="" id="tipoValor"> 
+        <datalist class="tipo" id="tipo">
+              <option >CÁMARAS DE COMERCIO</option>
+              <option >Congreso del estado de Chihuahua</option>
+              <option >CONVOCATORIAS</option>
+              <option >Cruz Roja</option>
+              <option >Elecciones</option>
+              <option >Elecciones Federales</option>
+              <option >Especiales</option>
+              <option >FECHAC</option>
+              <option >GASODUCTO</option>
+              <option >Gobierno del Estado de Chihuahua</option>
+              <option >Gobierno Federal</option>
+              <option >Gobierno Municipal de Camargo</option>
+              <option >Gobierno Municipal de Chihuahua</option>
+              <option >Gobierno Municipal de Cuauhtemoc</option>
+              <option >Gobierno Municipal de Delicias</option>
+              <option >Gobierno Municipal de Juárez</option>
+              <option >Gobierno Municipal de Nuevo Casas Grandes</option>
+              <option >Gobierno municipal de Ojinaga </option>
+              <option >Gobierno Municipal de Parral</option>
+              <option >IEE</option>
+              <option >ONGS</option>
+              <option >ONMPRI</option>
+              <option >Partidos Políticos</option>
+              <option >Personajes políticos</option>
+              <option >Poder Judicial</option>
+              <option >SNTE</option>
+              <option >UACH</option>
 </datalist>
     </div>
     <div class="col-md-4 mb-3">
-        
-      <label for="usuarioTipo">Categoria</label>
-      <input type="text" class="custom-select " list="lista" value=""> 
-        <datalist class="ingresarEmpresa" id="lista">
-          <option  value="">Seleccionar</option>
-          <option value="Radio"> Radio</option>
-          <option value="Television"> Television</option>
-          <option value="Digitales"> Digitales</option>
-          <option value="Impresos"> Impresos</option>
-          <option value="Portadas Impresos Estatales"> Portadas Impresos Estatales</option>
-          <option value="Columnas Políticas Estatales"> Columnas Políticas Estatales</option>
-          <option value="Redes Sociales"> Redes Sociales</option>
-          <option value="Periódico completo"> Periódico completo</option>
-          <option value="Columnas Nacionales"> Columnas Nacionales</option>
-          <option value="Convocatorias"> Convocatorias</option>
-          <option value="Resumen Nacional"> Resumen Nacional</option>
-          <option value="Portadas Nacionales"> Portadas Nacionales</option>
-          <option value="Editorial"> Editorial</option>
-</datalist>
+      <label for="categoria">Categoría</label>
+      <input type="text" class="form-control ingresarNombre" id="categoria" placeholder="Categoría">
+      <div class="valid-feedback">
+        Correcto!
+      </div>
     </div>
     <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text">Observaciones</span>
+    <span class="input-group-text">Comentarios</span>
   </div>
-  <textarea class="form-control" aria-label="With textarea" id="prosComentarios"></textarea>
+  <textarea class="form-control" aria-label="With textarea" id="comentarios"></textarea>
 </div>
     
     
@@ -75,7 +74,7 @@ include 'layout/header.php';
   
   
   </div>
-  <button class="btn btn-outline-danger" type="submit" id="registrarUsuario">Enviar Propuesta</button>
+  <button class="btn btn-outline-danger" type="submit" id="proponerPersonajeUser"><i class="fas fa-check"></i> Enviar Propuesta</button>
 </form>
 
 

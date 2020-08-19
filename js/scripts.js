@@ -11,7 +11,10 @@ const registrarUsuario = document.querySelector('#registrarUsuario'),
       proponerPrograma = document.querySelector('#proponer'),
       proponerPersonaje = document.querySelector('#proponerPersonaje'),
       propuesta = document.querySelector('#enviarPropuesta'),
-      listadoPropuestas = document.querySelector('.listado-propuestas');
+      listadoPropuestas = document.querySelector('.listado-propuestas')
+      proponerProgramaUser = document.querySelector('#proponerUser'),
+      proponerPersonajeUser = document.querySelector('#proponerPersonajeUser'),
+      propuestaUser = document.querySelector('#enviarPropuestaUser');
 
 
       function setFecha(){
@@ -92,6 +95,15 @@ function eventListenners() {
     }
     if (propuesta) {
       propuesta.addEventListener('click', propuestaGeneral);
+    }
+    if (proponerProgramaUser) {
+      proponerProgramaUser.addEventListener('click', programaUSer);
+    }
+    if (proponerPersonajeUser) {
+      proponerPersonajeUser.addEventListener('click', personajeUser);
+    }
+    if (propuestaUser) {
+      propuestaUser.addEventListener('click', propuestaGeneralUser);
     }
 }
 
@@ -712,44 +724,41 @@ function personaje(e) {
 
 function propuestaGeneral(e) {
   e.preventDefault();
-  
-  console.log('hola');
-  // const fecha = document.querySelector('#fechaActual').value,
-  //       nombre = document.querySelector('#nombre').value,
-  //       propuesta = document.querySelector('#propuesta').value,
-  //       dato = "Propuesta General";
+
+  const fecha = document.querySelector('#fechaActual').value,
+        nombre = document.querySelector('#nombre').value,
+        propuesta = document.querySelector('#propuesta').value,
+        dato = "Propuesta General";
         
 
-  //       if (propuesta === '') {
-  //         notificacionFlotante('error', 'Campo obligatorio');
-  //       } else {
-  //         const propuestaPersonaje = new FormData();
+        if (propuesta === '') {
+          notificacionFlotante('error', 'Campo obligatorio');
+        } else {
+          const propuestaGeneral = new FormData();
           
-  //         propuestaPersonaje.append('fecha', fecha);
-  //         propuestaPersonaje.append('nombre', nombre);
-  //         propuestaPersonaje.append('tipo', tipo);
-  //         propuestaPersonaje.append('categoria', categoria);
-  //         propuestaPersonaje.append('comentarios', comentarios);
-  //         propuestaPersonaje.append('dato', dato);
+          propuestaGeneral.append('fecha', fecha);
+          propuestaGeneral.append('nombre', nombre);
+          propuestaGeneral.append('propuesta', propuesta);
+          propuestaGeneral.append('dato', dato);
 
-  //         const xhr = new XMLHttpRequest();
+          const xhr = new XMLHttpRequest();
 
-  //         xhr.open('POST', 'includes/model/propuestaPersonaje.php', true);
+          xhr.open('POST', 'includes/model/propuestaGeneral.php', true);
 
-  //         xhr.onload = function() {
-  //           if (this.status === 200) {
-  //             const respuesta = JSON.parse(xhr.responseText);
-  //             console.log(respuesta);
-  //             if (respuesta.respuesta === 'correcto') {
-  //               notificacionFlotante('success', 'Propuesta enviada correctamente');
-  //               document.querySelector('.formulario').reset();
-  //               setFecha();
-  //             }
-  //           }
+          xhr.onload = function() {
+            if (this.status === 200) {
+              const respuesta = JSON.parse(xhr.responseText);
+              // console.log(respuesta);
+              if (respuesta.respuesta === 'correcto') {
+                notificacionFlotante('success', 'Propuesta enviada correctamente');
+                document.querySelector('.formulario').reset();
+                setFecha();
+              }
+            }
 
-  //         }
-  //         xhr.send(propuestaPersonaje);
-  //       }
+          }
+          xhr.send(propuestaGeneral);
+        }
 }
 
 function actualizarProgreso(e) {
@@ -837,3 +846,129 @@ function cambiarEstadoTarea(tarea, estado) {
 
 }
 
+
+function programaUSer(e) {
+  e.preventDefault();
+
+  const fecha = document.querySelector('#fechaActual').value,
+        nombre = document.querySelector('#nombre').value,
+        tipo = document.querySelector('#resultadoTipo').value,
+        fuente = document.querySelector('#fuente').value,
+        programa = document.querySelector('#programa').value,
+        comentarios = document.querySelector('#comentarios').value,
+        dato = "Programa";
+
+        if (tipo === '' || fuente === '' || programa === '' || comentarios === '') {
+          notificacionFlotante('error', 'Todos los campos son obligatorios');
+        } else {
+          const propuestaPrograma = new FormData();
+          
+          propuestaPrograma.append('fecha', fecha);
+          propuestaPrograma.append('nombre', nombre);
+          propuestaPrograma.append('tipo', tipo);
+          propuestaPrograma.append('fuente', fuente);
+          propuestaPrograma.append('programa', programa);
+          propuestaPrograma.append('comentarios', comentarios);
+          propuestaPrograma.append('dato', dato);
+
+          const xhr = new XMLHttpRequest();
+
+          xhr.open('POST', '../includes/model/propuestaPrograma.php', true);
+
+          xhr.onload = function() {
+            if (this.status === 200) {
+              const respuesta = JSON.parse(xhr.responseText);
+              console.log(respuesta);
+              if (respuesta.respuesta === 'correcto') {
+                notificacionFlotante('success', 'Propuesta enviada correctamente');
+                document.querySelector('.formulario-programa').reset();
+                setFecha();
+              }
+            }
+
+          }
+          xhr.send(propuestaPrograma);
+        }
+}
+
+function personajeUser(e) {
+  e.preventDefault();
+  
+  const fecha = document.querySelector('#fechaActual').value,
+        nombre = document.querySelector('#nombre').value,
+        tipo = document.querySelector('#tipoValor').value,
+        categoria = document.querySelector('#categoria').value,
+        comentarios = document.querySelector('#comentarios').value,
+        dato = "Personaje o Institucion";
+        
+
+        if (tipo === '' || categoria === '' || comentarios  === '') {
+          notificacionFlotante('error', 'Todos los campos son obligatorios');
+        } else {
+          const propuestaPersonaje = new FormData();
+          
+          propuestaPersonaje.append('fecha', fecha);
+          propuestaPersonaje.append('nombre', nombre);
+          propuestaPersonaje.append('tipo', tipo);
+          propuestaPersonaje.append('categoria', categoria);
+          propuestaPersonaje.append('comentarios', comentarios);
+          propuestaPersonaje.append('dato', dato);
+
+          const xhr = new XMLHttpRequest();
+
+          xhr.open('POST', '../includes/model/propuestaPersonaje.php', true);
+
+          xhr.onload = function() {
+            if (this.status === 200) {
+              const respuesta = JSON.parse(xhr.responseText);
+              console.log(respuesta);
+              if (respuesta.respuesta === 'correcto') {
+                notificacionFlotante('success', 'Propuesta enviada correctamente');
+                document.querySelector('.formulario').reset();
+                setFecha();
+              }
+            }
+
+          }
+          xhr.send(propuestaPersonaje);
+        }
+}
+
+function propuestaGeneralUser(e) {
+  e.preventDefault();
+
+  const fecha = document.querySelector('#fechaActual').value,
+        nombre = document.querySelector('#nombre').value,
+        propuesta = document.querySelector('#propuesta').value,
+        dato = "Propuesta General";
+        
+
+        if (propuesta === '') {
+          notificacionFlotante('error', 'Campo obligatorio');
+        } else {
+          const propuestaGeneral = new FormData();
+          
+          propuestaGeneral.append('fecha', fecha);
+          propuestaGeneral.append('nombre', nombre);
+          propuestaGeneral.append('propuesta', propuesta);
+          propuestaGeneral.append('dato', dato);
+
+          const xhr = new XMLHttpRequest();
+
+          xhr.open('POST', '../includes/model/propuestaGeneral.php', true);
+
+          xhr.onload = function() {
+            if (this.status === 200) {
+              const respuesta = JSON.parse(xhr.responseText);
+              // console.log(respuesta);
+              if (respuesta.respuesta === 'correcto') {
+                notificacionFlotante('success', 'Propuesta enviada correctamente');
+                document.querySelector('.formulario').reset();
+                setFecha();
+              }
+            }
+
+          }
+          xhr.send(propuestaGeneral);
+        }
+}

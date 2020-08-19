@@ -4,7 +4,7 @@ include 'layout/header.php';
 ?>
 <h2 class="text-center pt-3">Propuesta</h2>
 
-<form class="needs-validation formulario-usuario p-4" novalidate>
+<form class="needs-validation formulario p-4" novalidate>
   <div class="form-row">
     <div class="col-md-4 mb-3">
               <label for="fechaActual">Fecha</label>
